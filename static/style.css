@@ -91,3 +91,23 @@ select:focus {
     border: 1px solid #bbdefb;
     margin-bottom: 8px; /* Spacing between messages */
 }
+
+/* Add styles for the report page */
+.report-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 8px;
+}
+
+#conversationHistory p {
+    background: #e0e0e0;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+#score, #reportSummary {
+    margin-top: 20px;
+}

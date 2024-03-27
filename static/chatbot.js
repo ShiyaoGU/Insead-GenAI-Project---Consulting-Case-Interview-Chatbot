@@ -1,17 +1,15 @@
+let messageCount = 0;
+
 async function sendMessage() {
     const inputField = document.getElementById('userInput');
     const userText = inputField.value.trim();
 
-    // Check if the input is not empty
     if (userText) {
-        // Display user's message
         displayMessage(userText, 'user');
-
-        // Clear input field
         inputField.value = '';
+        messageCount++;  // Increment message count
 
         try {
-            // Send the message to Flask server
             const response = await fetch('/chatbot_message', {
                 method: 'POST',
                 headers: {
@@ -19,18 +17,21 @@ async function sendMessage() {
                 },
                 body: JSON.stringify({ message: userText }),
             });
-            
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
-            const data = await response.json();
 
-            // Display chatbot's response
+            const data = await response.json();
             displayMessage(data.message, 'bot');
+            messageCount++;  // Increment for bot's response as well
+
+            // Enable the report button after 5 user messages
+            if (messageCount >= 5) {
+                document.getElementById('generateReportBtn').disabled = false;
+            }
         } catch (e) {
-            console.error('Error sending message to server:', e);
-            // Optionally handle the error, e.g., by showing a message to the user
+            console.error('Error:', e);
         }
     }
 }
@@ -55,4 +56,21 @@ function displayMessage(message, sender) {
 
     // Scroll to the newest message
     chatDiv.scrollTop = chatDiv.scrollHeight;
+}
+
+
+async function generateReport() {
+    try {
+        // Request the server to generate a report
+        const response = await fetch('/generate_report');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Switch to the report.html page
+        window.location.href = '/generate_report';
+    } catch (e) {
+        console.error('Error generating report:', e);
+    }
 }
