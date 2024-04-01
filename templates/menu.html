@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaseMe.AI Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="menu-container">
+        <h2>Select Your Preferences</h2>
+        <div class="dropdown-container">
+            <label for="geography">Geography</label>
+            <select id="geography">
+                <!-- Setting a default value other than "Select" -->
+                <option value="middle-east">Middle East</option>
+                <option value="europe">Europe</option>
+                <option value="north-america">North America</option>
+            </select>
+        </div>
+        <div class="dropdown-container">
+            <label for="case-Type">Case Type</label>
+            <select id="case-Type">
+                <!-- Setting a default value -->
+                <option value="profitability">Profitability</option>
+                <option value="new-product">New Product</option>
+                <option value="market-entry">Market Entry</option>
+                <option value="m&a">M&A</option>
+            </select>
+        </div>
+        <div class="dropdown-container">
+            <label for="industry">Industry</label>
+            <select id="industry">
+                <!-- Setting a default value -->
+                <option value="telecommunication">Telecommunication</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="utilities">Utilities</option>
+                <option value="retail">Retail</option>
+                <option value="consumer-goods">Consumer Goods</option>
+            </select>
+        </div>
+        <div class="dropdown-container">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+                <!-- Setting a default value -->
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        <button onclick="location.href='{{ url_for('chatbot_page') }}'">Case Me!</button>
+
+
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

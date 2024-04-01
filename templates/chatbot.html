@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaseMe.AI Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="chat-container" class="chat-container">
+        <div id="chat" class="message-area">
+            <!-- Messages will be displayed here -->
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Type or record your answer here" aria-label="Message Input">
+            <button type="button" onclick="sendMessage()">Send</button>
+            <!-- New buttons for recording and uploading -->
+            <button type="button" id="recordButton">Record</button>
+            <button type="button" id="stopButton" disabled>Stop</button>
+            <button type="button" id="uploadButton" disabled>Upload</button>
+        </div>
+        <button id="generateReportBtn" class="generate-report-btn" onclick="generateReport()" disabled>Generate Report</button>
+    </div>
+
+    <!-- Reference to the new script that will handle recording and uploading -->
+    <script src="{{ url_for('static', filename='recorder.js') }}"></script>
+    <!-- Include your existing chatbot script -->
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+</body>
+</html>

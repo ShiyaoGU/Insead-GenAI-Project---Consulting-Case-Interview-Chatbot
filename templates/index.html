@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CaseMe.AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>      
+    <h1>Welcome to CaseMe.AI</h1>
+    <p>CaseMe.AI is a startup revolutionizing the way case interviews are conducted for both aspiring candidates and consulting cases.</p>
+    <button onclick="location.href='{{ url_for('menu') }}'">Get Started</button>
+    <div class="team-section">
+        <h3>Our Team</h3>
+        <div class="team-members">
+            <!-- Example of a team member -->
+            <div class="member">
+                <img src="https://via.placeholder.com/100" alt="Team Member">
+                <p>Carmen Gomez del Rio​</p>
+            </div>
+            <div class="member">
+                <img src="https://clubs.insead.edu/sailing/files/2024/01/Emanuele-FOGLIA-410a0be42b1eafd5.jpg" alt="Team Member">
+                <p>Emanuele Foglia</p>
+            </div>
+            <div class="member">
+                <img src="https://via.placeholder.com/100" alt="Team Member">
+                <p>Patrick Gossin​</p>
+            </div>
+            <div class="member">
+                <img src="https://media.licdn.com/dms/image/D4D03AQEEiJEmglqtbg/profile-displayphoto-shrink_200_200/0/1693304861109?e=2147483647&v=beta&t=cm9O5Gw6SagxWqw2JqzVWPdbfBYbmbXJV8eCm8QXkqg" alt="Team Member">
+                <p>Guillermo Minguez​</p>
+            </div>
+            <div class="member">
+                <img src="https://media.licdn.com/dms/image/D4E03AQGnJP_mBXtTXg/profile-displayphoto-shrink_800_800/0/1693376217392?e=2147483647&v=beta&t=H0r8V9gMAQ6YBBYxHYtxcOAjg-98f8x7sEVC4nappm4" alt="Team Member">
+                <p>Manuel Queiroz​</p>
+            </div>
+            <div class="member">
+                <img src="https://clubs.insead.edu/middleeastnorthafrica/files/2023/12/Johnny-Bedran.jpg" alt="Team Member">
+                <p>Johnny Bedran​</p>
+            </div>
+            <!-- Repeat the above block for each team member, replacing the src of the img and Member Name accordingly -->
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

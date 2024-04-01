@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="report-container">
+        <h1 class="report-title">How did you do?</h1>
+        <div class="scorecard">
+            <div class="scorecard-item">
+                <h2>Overall Grade</h2>
+                <p class="score">8.6/10</p>
+                <p class="score-improvement">1 point better than last time</p>
+            </div>
+            <div class="scorecard-item">
+                <h2># of cases completed</h2>
+                <p class="score">57</p>
+                <p class="score-change">+33% month over month</p>
+            </div>
+            <div class="scorecard-item">
+                <h2>Time to complete</h2>
+                <p class="score">37 minutes</p>
+                <p class="score-change">-8% month over month</p>
+            </div>
+        </div>
+        <!-- Placeholder for the performance chart -->
+        <div class="performance-chart">
+            <h2>Performance over time</h2>
+            <!-- In a real-world scenario, you would generate this chart using a library like Chart.js -->
+            <!-- <img src="path-to-your-chart-image.png" alt="Performance over time"> -->
+        </div>
+        <!-- Back to home button -->
+        <button onclick="window.location='/'" class="home-button">Back to Home</button>
+    </div>
+</body>
+</html>
