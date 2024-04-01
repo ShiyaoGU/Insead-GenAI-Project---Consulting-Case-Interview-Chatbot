@@ -41,23 +41,17 @@ function displayMessage(message, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('chat-message');
 
-    // Adding text based on the sender
-    let displayText = message;
     if (sender === 'user') {
         messageDiv.classList.add('user-query');
-        displayText = "You: " + message;
     } else if (sender === 'bot') {
         messageDiv.classList.add('bot-response');
-        displayText = "Interviewer: " + message;
     }
-    
-    messageDiv.textContent = displayText;
+
+    messageDiv.textContent = message;
     chatDiv.appendChild(messageDiv);
 
-    // Scroll to the newest message
     chatDiv.scrollTop = chatDiv.scrollHeight;
 }
-
 
 async function generateReport() {
     try {
@@ -72,5 +66,34 @@ async function generateReport() {
         window.location.href = '/generate_report';
     } catch (e) {
         console.error('Error generating report:', e);
+    }
+}
+
+// New function to handle the audio data
+async function sendAudio(audioBlob) {
+    try {
+        const formData = new FormData();
+        formData.append('audio_file', audioBlob, 'recording.mp3');
+        
+        const response = await fetch('/upload_audio', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        // Assuming the server returns the transcribed text in the data
+        // and you want to send that text as a message:
+        if (data.transcribed_text) {
+            displayMessage(data.transcribed_text, 'user');
+            messageCount++;  // Increment message count for the transcribed text
+            sendMessage();  // Trigger the chatbot message process with the transcribed text
+        }
+    } catch (e) {
+        console.error('Error sending audio:', e);
     }
 }
